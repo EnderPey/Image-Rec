@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Hello Name APP</title>
+    <style>
+        *{
+            font-size : 30px;
+        }
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+</head>
+<body>
+    <input id="name-input" type = "text"/>
+    <button id="name-button">Submit Name</button>
+    <p id="greeting"></p>
+
+    
+    <script>
+        $("#name-button").click(function(event){
+                let message = {
+                    name: $("#name-input").val()
+            }
+            $.post("/hello",JSON.stringify(message),function(response){
+                $("#greeting").text(response.greeting);
+                console.log(response)
+           });
+        });
+    </script>
+
+
+</body>
+
+</html>
